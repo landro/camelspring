@@ -8,7 +8,7 @@ public class FileToFileRoute extends SpringRouteBuilder {
 
 	@Override
 	public void configure() throws Exception {
-		from("file:data/inbox").bean(FileHeaderInfo.class).bean(RoutingSlip.class);
+		from("file:data/inbox").bean(FileHeaderInfo.class).to("file:data/outbox?fileName=${bean:filename}");
 	}
 
 }
